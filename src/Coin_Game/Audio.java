@@ -1,42 +1,42 @@
 package Coin_Game;
-
+//https://github.com/DongChyeon/Java-Toy-Projects/blob/master/ShootingGame/src/Audio.java ì½”ë“œ ì¸ìš©
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 
-public class Audio { // È¿°úÀ½ ¹× bgmÀ» ½ÇÇàÇÏ±â À§ÇÑ Å¬·¡½º »ı¼º
-    private Clip clip; // »ç¿îµåÀÇ Å¬¸³ ¼±¾ğ
-    private File audioFile; // ÆÄÀÏÀ» ³Ö±â À§Çì ¿Àµğ¿ÀÆÄÀÏ ¼±¾ğ
-    private AudioInputStream audioInputStream; // ¿Àµğ¿À ½ºÆ®¸² »ı¼º
-    private boolean isLoop; // ¹«ÇÑ ¹İº¹À» À§ÇÑ ·çÇÁ »ı¼º
+public class Audio { // íš¨ê³¼ìŒ ë° bgmì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ í´ë˜ìŠ¤ ìƒì„±
+    private Clip clip; // ì‚¬ìš´ë“œì˜ í´ë¦½ ì„ ì–¸
+    private File audioFile; // íŒŒì¼ì„ ë„£ê¸° ìœ„í—¤ ì˜¤ë””ì˜¤íŒŒì¼ ì„ ì–¸
+    private AudioInputStream audioInputStream; // ì˜¤ë””ì˜¤ ìŠ¤íŠ¸ë¦¼ ìƒì„±
+    private boolean isLoop; // ë¬´í•œ ë°˜ë³µì„ ìœ„í•œ ë£¨í”„ ìƒì„±
 
     public Audio(String pathName, boolean isLoop) {
         try {
-        	//Å¬¸³°ú ¿Àµğ¿ÀÆÄÀÏ ¿¬°á
+        	//í´ë¦½ê³¼ ì˜¤ë””ì˜¤íŒŒì¼ ì—°ê²°
             clip = AudioSystem.getClip();
             audioFile = new File(pathName);
             audioInputStream = AudioSystem.getAudioInputStream(audioFile);
             clip.open(audioInputStream); 
         
-            // 3°¡ÁöÀÇ ¿¹¿Ü Ã³¸® ¼±¾ğ
-        } catch (LineUnavailableException e) { //¶óÀÎÀÌ »ç¿ë ºÒ°¡ÀÌ±â ¶§¹®¿¡ ¿­¸®Áö ¾ÊÀ»¶§
+            // 3ê°€ì§€ì˜ ì˜ˆì™¸ ì²˜ë¦¬ ì„ ì–¸
+        } catch (LineUnavailableException e) { //ë¼ì¸ì´ ì‚¬ìš© ë¶ˆê°€ì´ê¸° ë•Œë¬¸ì— ì—´ë¦¬ì§€ ì•Šì„ë•Œ
             e.printStackTrace();
-        } catch (IOException e) { // ¿Àµğ¿À ÆÄÀÏÀÌ Á¸Àç ÇÏÁö ¾ÊÀ»¶§
+        } catch (IOException e) { // ì˜¤ë””ì˜¤ íŒŒì¼ì´ ì¡´ì¬ í•˜ì§€ ì•Šì„ë•Œ
             e.printStackTrace();
-        } catch (UnsupportedAudioFileException e) {// Áö¿øÇÏÁö ¾Ê´Â ¿Àµğ¿À ÆÄÀÏÀÏ¶§
+        } catch (UnsupportedAudioFileException e) {// ì§€ì›í•˜ì§€ ì•ŠëŠ” ì˜¤ë””ì˜¤ íŒŒì¼ì¼ë•Œ
             e.printStackTrace();
         }
     }
 
     public void start() {
     	
-        clip.setFramePosition(0); // Å¬¸³ÀÇ ¿Àµğ¿À µ¥ÀÌÅÍÀÇ ¼±µÎ·ÎºÎÅÍ Àç»ı
-        clip.start(); // Å¬¸³ ½ÃÀÛ
-        if (isLoop) clip.loop(Clip.LOOP_CONTINUOUSLY); // ¹«ÇÑ ·çÇÁ »ı¼º
+        clip.setFramePosition(0); // í´ë¦½ì˜ ì˜¤ë””ì˜¤ ë°ì´í„°ì˜ ì„ ë‘ë¡œë¶€í„° ì¬ìƒ
+        clip.start(); // í´ë¦½ ì‹œì‘
+        if (isLoop) clip.loop(Clip.LOOP_CONTINUOUSLY); // ë¬´í•œ ë£¨í”„ ìƒì„±
         
     }
 
     public void stop() {
-    	clip.stop(); // Å¬¸³ ¸ØÃã
+    	clip.stop(); // í´ë¦½ ë©ˆì¶¤
     }
 }
